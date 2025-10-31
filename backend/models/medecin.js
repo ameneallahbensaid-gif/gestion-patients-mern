@@ -1,17 +1,15 @@
-// backend/models/Patient.js
+// backend/models/Medecin.js
 import mongoose from "mongoose";
 
-const patientSchema = new mongoose.Schema({
+const medecinSchema = new mongoose.Schema({
   nom: { type: String, required: true },
   prenom: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   telephone: { type: String },
-  adresse: { type: String },
-  dateNaissance: { type: Date },
-  historiqueMedical: { type: String },
-  assurance: { type: String },
+  specialite: { type: String, required: true },
+  emploiTemps: { type: String }, // texte simple ou JSON selon besoin
   rendezVous: [{ type: mongoose.Schema.Types.ObjectId, ref: "RendezVous" }]
 }, { timestamps: true });
 
-const Patient = mongoose.model("Patient", patientSchema);
-export default Patient;
+const Medecin = mongoose.model("Medecin", medecinSchema);
+export default Medecin;
