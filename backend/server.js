@@ -4,11 +4,18 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import cors from 'cors'
 
+import patientRoutes from "./routes/patientRoutes.js";
+
+
+
+
 dotenv.config();
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use("/api/patients", patientRoutes);
+
 
 // test
 app.get("/" , (req , res) => {
