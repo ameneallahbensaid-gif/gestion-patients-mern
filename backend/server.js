@@ -17,7 +17,10 @@ import rdvRoutes from "./routes/rdvRoutes.js";
 dotenv.config();
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000', // URL de votre frontend React
+  credentials: true
+}));
 app.use(express.json());
 app.use("/api/patients", patientRoutes);
 app.use("/api/medecins", medecinRoutes);
